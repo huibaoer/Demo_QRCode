@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xw1-j8-qUw">
+                    <rect key="frame" x="8" y="82" width="304" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="扫一扫">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="scanButtonAction:" destination="-1" eventType="touchUpInside" id="FD2-xl-lvg"/>
+                    </connections>
+                </button>
+                <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4s-yI-XdN">
+                    <rect key="frame" x="8" y="120" width="304" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="我的二维码">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="myQRCodeButtonAction:" destination="-1" eventType="touchUpInside" id="Gbw-hr-tMB"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vL4-Fv-qzT">
+                    <rect key="frame" x="8" y="158" width="304" height="30"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="识别图中二维码">
+                        <color key="titleShadowColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    </state>
+                    <connections>
+                        <action selector="imageQRCodeAction:" destination="-1" eventType="touchUpInside" id="Pi8-mG-Soh"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="v4s-yI-XdN" firstAttribute="top" secondItem="Xw1-j8-qUw" secondAttribute="bottom" constant="8" id="2u4-v8-m9l"/>
+                <constraint firstItem="Xw1-j8-qUw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="82" id="5of-rP-DKX"/>
+                <constraint firstAttribute="trailing" secondItem="Xw1-j8-qUw" secondAttribute="trailing" constant="8" id="Tz1-ZQ-Fhh"/>
+                <constraint firstItem="v4s-yI-XdN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="o2R-EZ-Fa2"/>
+                <constraint firstItem="Xw1-j8-qUw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="uI7-IA-qGZ"/>
+                <constraint firstAttribute="trailing" secondItem="v4s-yI-XdN" secondAttribute="trailing" constant="8" id="wz8-Mt-yI7"/>
+            </constraints>
+            <point key="canvasLocation" x="373" y="287"/>
+        </view>
+    </objects>
+</document>
