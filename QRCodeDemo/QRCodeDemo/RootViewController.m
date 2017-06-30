@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "QRCodeScanViewController.h"
+#import "QRCodeScanController.h"
 #import "MyQRCodeViewController.h"
 
 #import "MLSelectPhotoAssets.h"
@@ -28,7 +28,7 @@
 }
 
 - (IBAction)scanButtonAction:(id)sender {
-    QRCodeScanViewController *qr = [[QRCodeScanViewController alloc] init];
+    QRCodeScanController *qr = [[QRCodeScanController alloc] init];
     [self.navigationController pushViewController:qr animated:YES];
 }
 

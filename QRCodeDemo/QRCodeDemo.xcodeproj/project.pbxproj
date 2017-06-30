@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D542346F1BA6B040000855E3 /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D542346A1BA6B040000855E3 /* line@2x.png */; };
 		D54234701BA6B040000855E3 /* QRCodeBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D542346C1BA6B040000855E3 /* QRCodeBackgroundView.m */; };
-		D54234711BA6B040000855E3 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D542346E1BA6B040000855E3 /* QRCodeScanViewController.m */; };
+		D54234711BA6B040000855E3 /* QRCodeScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = D542346E1BA6B040000855E3 /* QRCodeScanController.m */; };
 		D54234741BA6C662000855E3 /* QRCodeCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = D54234731BA6C662000855E3 /* QRCodeCreator.m */; };
 		D54234781BA6CDEF000855E3 /* MyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54234761BA6CDEF000855E3 /* MyQRCodeViewController.m */; };
 		D54234791BA6CDEF000855E3 /* MyQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54234771BA6CDEF000855E3 /* MyQRCodeViewController.xib */; };
@@ -57,8 +57,8 @@
 		D542346A1BA6B040000855E3 /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@2x.png"; sourceTree = "<group>"; };
 		D542346B1BA6B040000855E3 /* QRCodeBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeBackgroundView.h; sourceTree = "<group>"; };
 		D542346C1BA6B040000855E3 /* QRCodeBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeBackgroundView.m; sourceTree = "<group>"; };
-		D542346D1BA6B040000855E3 /* QRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanViewController.h; sourceTree = "<group>"; };
-		D542346E1BA6B040000855E3 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
+		D542346D1BA6B040000855E3 /* QRCodeScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanController.h; sourceTree = "<group>"; };
+		D542346E1BA6B040000855E3 /* QRCodeScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanController.m; sourceTree = "<group>"; };
 		D54234721BA6C662000855E3 /* QRCodeCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeCreator.h; sourceTree = "<group>"; };
 		D54234731BA6C662000855E3 /* QRCodeCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeCreator.m; sourceTree = "<group>"; };
 		D54234751BA6CDEF000855E3 /* MyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQRCodeViewController.h; sourceTree = "<group>"; };
@@ -146,8 +146,8 @@
 				D542346A1BA6B040000855E3 /* line@2x.png */,
 				D542346B1BA6B040000855E3 /* QRCodeBackgroundView.h */,
 				D542346C1BA6B040000855E3 /* QRCodeBackgroundView.m */,
-				D542346D1BA6B040000855E3 /* QRCodeScanViewController.h */,
-				D542346E1BA6B040000855E3 /* QRCodeScanViewController.m */,
+				D542346D1BA6B040000855E3 /* QRCodeScanController.h */,
+				D542346E1BA6B040000855E3 /* QRCodeScanController.m */,
 				D54234721BA6C662000855E3 /* QRCodeCreator.h */,
 				D54234731BA6C662000855E3 /* QRCodeCreator.m */,
 			);
@@ -356,7 +356,7 @@
 				TargetAttributes = {
 					D5EB04A61BA063730016B2C3 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = LW95FQS929;
+						DevelopmentTeam = ZVU7Z43C4E;
 					};
 					D5EB04BF1BA063730016B2C3 = {
 						CreatedOnToolsVersion = 6.4;
@@ -417,7 +417,7 @@
 				D5EB04B01BA063730016B2C3 /* AppDelegate.m in Sources */,
 				D58460D41C9973C70071005C /* UIView+MLExtension.m in Sources */,
 				D58460D61C9973C70071005C /* MLSelectPhotoPickerBrowserPhoto.m in Sources */,
-				D54234711BA6B040000855E3 /* QRCodeScanViewController.m in Sources */,
+				D54234711BA6B040000855E3 /* QRCodeScanController.m in Sources */,
 				D54234741BA6C662000855E3 /* QRCodeCreator.m in Sources */,
 				D58460DB1C9973C70071005C /* MLSelectPhotoPickerAssetsViewController.m in Sources */,
 				D54234781BA6CDEF000855E3 /* MyQRCodeViewController.m in Sources */,
@@ -557,6 +557,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZVU7Z43C4E;
 				INFOPLIST_FILE = QRCodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -570,6 +571,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZVU7Z43C4E;
 				INFOPLIST_FILE = QRCodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

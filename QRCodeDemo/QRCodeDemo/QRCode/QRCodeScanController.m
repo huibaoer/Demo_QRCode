@@ -6,23 +6,26 @@
 //  Copyright (c) 2015年 haitao. All rights reserved.
 //
 
-#import "QRCodeScanViewController.h"
+#import "QRCodeScanController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "QRCodeBackgroundView.h"
 
-@interface QRCodeScanViewController () <AVCaptureMetadataOutputObjectsDelegate>
+@interface QRCodeScanController () <AVCaptureMetadataOutputObjectsDelegate> {
+    BOOL _qrResult;
+}
+
 @property (strong, nonatomic) AVCaptureSession *session;//影音采集会话对象
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *layer;//用于展示session采集到的内容
 
 @end
 
-@implementation QRCodeScanViewController
+@implementation QRCodeScanController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _qrResult = NO;
     
     self.navigationController.navigationBar.alpha = 0.5;
-    
     QRCodeBackgroundView *bg = [[QRCodeBackgroundView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:bg];
     
@@ -34,6 +37,33 @@
 - (void)startScan {
     //选择设备（二维码肯定是视频设备）
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    if ([device lockForConfiguration:nil]) {
+        //对焦模式，自动对焦
+        if (device && [device isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
+            [device setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
+        }
+        else if(device && [device isFocusModeSupported:AVCaptureFocusModeAutoFocus]){
+            [device setFocusMode:AVCaptureFocusModeAutoFocus];
+        }
+        
+        // 自动白平衡
+        if (device && [device isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance]) {
+            device.whiteBalanceMode = AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance;
+        }
+        else if (device && [device isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeAutoWhiteBalance]) {
+            device.whiteBalanceMode = AVCaptureWhiteBalanceModeAutoWhiteBalance;
+        }
+        
+        if (device && [device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]) {
+            device.exposureMode = AVCaptureExposureModeContinuousAutoExposure;
+        }
+        else if (device && [device isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
+            device.exposureMode = AVCaptureExposureModeAutoExpose;
+        }
+        [device unlockForConfiguration];
+    }
+    
     //获取设备输入
     NSError *error;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
@@ -85,12 +115,16 @@
 {
     if (metadataObjects.count>0) {
         AVMetadataMachineReadableCodeObject *metadataObject = [metadataObjects objectAtIndex:0];
+        if ([[metadataObject type] isEqualToString:AVMetadataObjectTypeQRCode]) {
+            [self performSelectorOnMainThread:@selector(handleScanResult:) withObject:metadataObject.stringValue waitUntilDone:NO];
+        }
+        
+        /*
         if ([metadataObject isKindOfClass:[AVMetadataFaceObject class]]) {
             NSLog(@"--ht-- face detected!");
             //镜头刚扫到图片的时候 因为图片不清晰 会认为是面部表情 如果取 stringValue属性 会导致crash
             return;
         }
-        
         if (metadataObject.stringValue!=nil) {
             NSString *str = metadataObject.stringValue;
             NSLog(@"--ht-- code :%@",str);
@@ -100,12 +134,32 @@
         }else{
             NSLog(@"--ht-- catch a nil code");
         }
+         */
     }
+}
+
+- (void)handleScanResult:(NSString *)result
+{
+    [self stopScan];
+    if (_qrResult) {
+        return;
+    }
+    _qrResult = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(onScanResult:)]) {
+        [self.delegate onScanResult:result];
+    }
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 -(void)stopScan {
     [self.session stopRunning];
     [self.layer removeFromSuperlayer];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self stopScan];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 @end
